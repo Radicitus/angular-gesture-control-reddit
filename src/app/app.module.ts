@@ -3,16 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiComponent } from './ui/ui.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { HandtrackerComponent } from './handtracker/handtracker.component';
+import { UiComponent } from './components/ui/ui.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { HandtrackerComponent } from './components/handtracker/handtracker.component';
+import { RedditItemComponent } from './components/reddit-item/reddit-item.component';
+import { RedditItemListComponent } from './components/reddit-item-list/reddit-item-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UiComponent,
     HomePageComponent,
-    HandtrackerComponent
+    HandtrackerComponent,
+    RedditItemComponent,
+    RedditItemListComponent
   ],
   imports: [
     BrowserModule,
