@@ -12,7 +12,8 @@ export class RedditItemComponent {
   title: string = "This is a test title";
   username: string = "testUser";
   subreddit: string = "testSubreddit";
-  thumbnail: string = "";
+  thumbnail: string =
+    "https://b.thumbs.redditmedia.com/WxPA-HOO09Ke55Q9GVwyzahaSQSCMX67yyUUbbMmj5s.jpg";
   upVotes: number = 1002;
   downVotes: number = 45;
   postContent: string =
