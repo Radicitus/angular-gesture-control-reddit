@@ -10,19 +10,18 @@ export class RedditData{
 
     constructor(objectModel:{}) {
 
-        if(!this.video) {
             // @ts-ignore
-            this.username = objectModel['author_fullname'];
+            this.username = objectModel['data']['author'];
             // @ts-ignore
-            this.subreddit = objectModel['subreddit'];
+            this.subreddit = objectModel['data']['subreddit_name_prefixed'];
             // @ts-ignore
-            this.thumbnail = objectModel['thumbnail'];
+            this.thumbnail = objectModel['data']['thumbnail'];
             // @ts-ignore
-            this.upvotes = objectModel['ups'];
+            this.upvotes = objectModel['data']['ups'];
             // @ts-ignore
-            this.downvotes = objectModel['downs'];
+            this.downvotes = objectModel['data']['downs'];
             // @ts-ignore
-            this.title = objectModel['title'];
-        }
+            this.title = objectModel['data']['title'];
+
     }
 }

@@ -24,10 +24,20 @@ export class RedditService {
     );
   }
 
-    getRedditPost(): Promise<RedditData> {
+    getRedditPost(): Promise<RedditData[]> {
         //This line is sending a request to express, which returns a promise with some data. We're then parsing the data
         return this.sendRequestToExpress().then((data) => {
-            return new RedditData(data);
+
+            let posts: RedditData[] = [];
+
+            data['data']['children']?.map((post:{}) => {
+
+
+                let newPost = new RedditData(post);
+                posts.push(newPost);
+            })
+            return posts;
         });
+
     }
 }

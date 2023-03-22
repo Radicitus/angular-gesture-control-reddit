@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PredictionEvent } from '../prediction-event';
 import {RedditService} from "../services/reddit.service";
+import {RedditData} from "../../data/Reddit-Data";
 
 @Component({
   selector: 'app-home-page',
@@ -11,6 +12,9 @@ export class HomePageComponent implements OnInit {
   gesture: String = "";
   constructor(private redditService: RedditService) {
     this.redditService.sendRequestToExpress().then(r => console.log("function runs"));
+    this.redditService.getRedditPost().then(data => {
+      console.log("HOMEPAGE: ", data);
+    });
   }
 
   ngOnInit(): void {
