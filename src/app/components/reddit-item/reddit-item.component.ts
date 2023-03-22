@@ -1,6 +1,9 @@
 import { Component, Input } from "@angular/core";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
+import { faBookmark } from "@fortawesome/free-regular-svg-icons";
+import { flush } from "@angular/core/testing";
+
 @Component({
   selector: "app-reddit-item",
   templateUrl: "./reddit-item.component.html",
@@ -18,11 +21,33 @@ export class RedditItemComponent {
   upVotes: number = 1002;
   downVotes: number = 45;
   postContent: string =
-    "This is some post content. It doesn't have to be much, but here it is! Awesome, thanks for reading.";
+    "This is some post content. It doesn't have to be much, but here it is! Awesome, thanks for reading. There's no way something would be so long but.";
+
+  // Post State
+  saved: boolean = false;
 
   // Icons
   upvoteIcon = faArrowUp;
   downvoteIcon = faArrowDown;
+  bookmarkOutlineIcon = faBookmark;
 
-  constructor() {}
+  constructor() {
+    if (this.postContent.length > 88) {
+      this.postContent = this.postContent.slice(0, 88) + "...";
+    }
+  }
+
+  savePost() {
+    this.saved = true;
+  }
+
+  unsavePost() {
+    this.saved = false;
+  }
+
+  switchSavePost() {
+    this.saved = !this.saved;
+  }
+
+  downvotePost() {}
 }
