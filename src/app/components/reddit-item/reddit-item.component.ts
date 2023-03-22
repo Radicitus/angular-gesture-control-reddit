@@ -8,5 +8,15 @@ import { Component, Input } from "@angular/core";
 export class RedditItemComponent {
   @Input() post: String;
 
+  // Post data
+  title: string = "This is a test title";
+  username: string = "testUser";
+  subreddit: string = "testSubreddit";
+  thumbnail: string = "";
+  upVotes: number = 1002;
+  downVotes: number = 45;
+  postContent: string =
+    "This is some post content. It doesn't have to be much, but here it is! Awesome, thanks for reading.";
+
   constructor() {}
 }
