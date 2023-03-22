@@ -8,6 +8,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HandtrackerComponent } from './components/handtracker/handtracker.component';
 import { RedditItemComponent } from './components/reddit-item/reddit-item.component';
 import { RedditItemListComponent } from './components/reddit-item-list/reddit-item-list.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RedditItemListComponent } from './components/reddit-item-list/reddit-it
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
