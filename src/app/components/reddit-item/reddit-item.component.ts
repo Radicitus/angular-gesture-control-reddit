@@ -41,13 +41,26 @@ export class RedditItemComponent {
     });
 
     // Toggle Saved
-    this.postStateService.setSavedObservable.subscribe((state) => {
+    this.postStateService.setSavedObservable.subscribe((toSave) => {
       if (this.currentPost) {
-        this.saved = state === 1;
-        this.postStateService.updateSaveState(0);
+        if (toSave) {
+          this.saved = true;
+          this.postStateService.setSaved(false);
+        }
       }
     });
 
+    // Toggle Unsaved
+    this.postStateService.setUnsavedObservable.subscribe((toUnsave) => {
+      if (this.currentPost) {
+        if (toUnsave) {
+          this.saved = false;
+          this.postStateService.setUnsaved(false);
+        }
+      }
+    });
+
+    // Toggle Upvote
     this.postStateService.upVoteObservable.subscribe((state) => {
       if (this.currentPost) {
         if (state) {
@@ -57,6 +70,7 @@ export class RedditItemComponent {
       }
     });
 
+    // Toggle Downvote
     this.postStateService.downVoteObservable.subscribe((state) => {
       if (this.currentPost) {
         if (state) {

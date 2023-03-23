@@ -14,11 +14,18 @@ export class PostStateService {
     this.postIndex.next(index);
   }
 
-  public setSaved = new BehaviorSubject<number>(0);
-  setSavedObservable = this.setSaved.asObservable();
+  public save = new BehaviorSubject<boolean>(false);
+  setSavedObservable = this.save.asObservable();
 
-  updateSaveState(saveState: number) {
-    this.setSaved.next(saveState);
+  setSaved(bool: boolean) {
+    this.save.next(bool);
+  }
+
+  public unsave = new BehaviorSubject<boolean>(false);
+  setUnsavedObservable = this.unsave.asObservable();
+
+  setUnsaved(bool: boolean) {
+    this.unsave.next(bool);
   }
 
   public upVote = new BehaviorSubject<boolean>(false);

@@ -40,6 +40,12 @@ export class HomePageComponent implements OnInit {
     if (this.gesture === "Closed Hand") {
       this.setDownvote();
     }
+    if (this.gesture === "One Open, One Closed") {
+      this.setSavePost();
+    }
+    if (this.gesture === "Two Closed Hands") {
+      this.setUnsavePost();
+    }
   }
 
   updatePostIndex(index: number) {
@@ -60,11 +66,11 @@ export class HomePageComponent implements OnInit {
   }
 
   setSavePost() {
-    this.postStateService.updateSaveState(1);
+    this.postStateService.setSaved(true);
   }
 
   setUnsavePost() {
-    this.postStateService.updateSaveState(2);
+    this.postStateService.setUnsaved(true);
   }
 
   setUpvote() {
