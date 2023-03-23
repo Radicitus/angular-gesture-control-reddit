@@ -1,0 +1,11 @@
+<div class="text-center">
+    <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
+
+    <div [innerHTML]="gesture"></div>
+
+    <div class="mt-8">
+        <app-reddit-item-list [posts]="redditPosts" ></app-reddit-item-list>
+    </div>
+</div>
+
+

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import * as handTrack from 'handtrackjs';
-import { PredictionEvent } from '../prediction-event';
+import { PredictionEvent } from '../../prediction-event';
 
 @Component({
   selector: 'app-handtracker',
