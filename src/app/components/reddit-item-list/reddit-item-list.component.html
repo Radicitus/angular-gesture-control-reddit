@@ -1,3 +1,5 @@
-<div>
-    <app-reddit-item *ngFor="let p of posts" [post]="p"></app-reddit-item>
+<div *ngIf="posts">
+    <div *ngFor="let p of posts">
+        <app-reddit-item [post]="p"></app-reddit-item>
+    </div>
 </div>

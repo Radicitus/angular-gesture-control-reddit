@@ -1,11 +1,11 @@
 <div class="rounded-2xl bg-white my-6 mx-8 h-36 grid grid-cols-10 grid-rows-4 group hover:scale-105 hover:bg-blue-100
   transition-all ease-in-out delay-100">
 
-    <img [src]="thumbnail" alt=""
+    <img [src]="this.post.thumbnail" alt=""
          class="col-start-1 col-span-3 row-span-4 place-self-center h-32 w-32 pl-1 rounded-2xl">
 
     <div class="col-start-4 col-span-6 row-start-1 row-span-1 justify-self-start self-start text-sm text-gray-400 pl-4 pt-2">
-        {{subreddit}} <span class="font-extralight">- Posted by u/{{username}}</span>
+        {{this.post.subreddit}} <span class="font-extralight">- Posted by u/{{this.post.username}}</span>
     </div>
 
     <div class="col-start-10 col-span-1 row-start-1 row-span-1 place-self-center" (click)="switchSavePost()">
@@ -14,20 +14,20 @@
     </div>
 
     <div class="col-start-4 col-span-6 row-start-1 row-span-2 justify-self-start self-center pl-4 text-left font-semibold pt-6 leading-4">
-        {{title}}
+        {{this.post.title}}
     </div>
 
     <div class="col-start-4 col-span-2 row-start-4 row-span-1 justify-self-start self-start pl-3 text-blue-600" (click)="downvotePost()">
         <fa-icon *ngIf="!hasDownvoted" [icon]="downvoteIcon" class="text-black" ></fa-icon>
         <fa-icon *ngIf="hasDownvoted" [icon]="downvoteIcon" class="text-blue-600" ></fa-icon>
-        {{downVotes}}
+        {{this.post.downvotes}}
     </div>
 
     <div class="col-start-4 col-span-2 row-start-3 row-span-1 justify-self-start self-center pl-3 text-orange-500" (click)="upvotePost()">
 
         <fa-icon *ngIf="!hasUpvoted" [icon]="upvoteIcon" class="text-black" ></fa-icon>
         <fa-icon *ngIf="hasUpvoted" [icon]="upvoteIcon" class="text-orange-500" ></fa-icon>
-        {{upVotes}}
+        {{this.post.upvotes}}
     </div>
 
     <div class="col-start-6 col-span-5 row-start-3 row-span-2 place-self-start text-sm text-left break-words font-light pr-3">

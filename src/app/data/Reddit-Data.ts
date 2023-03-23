@@ -14,6 +14,10 @@ export class RedditData {
     this.subreddit = objectModel["data"]["subreddit_name_prefixed"];
     // @ts-ignore
     this.thumbnail = objectModel["data"]["thumbnail"];
+    if (this.thumbnail === "default") {
+      this.thumbnail =
+        "https://b.thumbs.redditmedia.com/WxPA-HOO09Ke55Q9GVwyzahaSQSCMX67yyUUbbMmj5s.jpg";
+    }
     // @ts-ignore
     this.upvotes = objectModel["data"]["ups"];
     // @ts-ignore

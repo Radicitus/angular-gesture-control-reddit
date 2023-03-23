@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { RedditData } from "../../data/Reddit-Data";
@@ -38,13 +38,15 @@ export class RedditItemComponent {
       this.postContent = this.postContent.slice(0, 88) + "...";
     }
 
-    // Update post object
-    this.title = this.post.title;
-    // this.username = this.post.username;
-    // this.subreddit = this.post.subreddit;
-    // this.thumbnail = this.post.thumbnail;
-    // this.upVotes = this.post.upvotes;
-    // this.downVotes = this.post.downvotes;
+    if (this.post) {
+      // Update post object
+      this.title = this.post.title;
+      // this.username = this.post.username;
+      // this.subreddit = this.post.subreddit;
+      // this.thumbnail = this.post.thumbnail;
+      // this.upVotes = this.post.upvotes;
+      // this.downVotes = this.post.downvotes;
+    }
   }
 
   savePost() {
