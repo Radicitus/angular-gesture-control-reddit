@@ -8,6 +8,7 @@ import { RedditData } from "../data/Reddit-Data";
 })
 export class RedditService {
   constructor(private http: HttpClient) {}
+
   public sendRequestToExpress(): Promise<any> {
     return lastValueFrom(
       this.http.get("https://www.reddit.com/r/all/top/.json")
@@ -24,11 +25,10 @@ export class RedditService {
   }
 
   getRedditPosts(): Promise<RedditData[]> {
-    //This line is sending a request to express, which returns a promise with some data. We're then parsing the data
     return this.sendRequestToExpress().then((data) => {
       let posts: RedditData[] = [];
 
-      data["data"]["children"]?.map((post: {}) => {
+      data["data"]["children"].map((post: {}) => {
         let newPost = new RedditData(post);
         posts.push(newPost);
       });

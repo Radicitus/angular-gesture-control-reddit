@@ -3,7 +3,7 @@
 
     <div [innerHTML]="gesture"></div>
 
-    <div class="mt-8">
+    <div class="mt-8" *ngIf="redditPosts">
         <app-reddit-item-list [posts]="redditPosts" ></app-reddit-item-list>
     </div>
 </div>

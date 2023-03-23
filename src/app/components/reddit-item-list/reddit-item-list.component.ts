@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { RedditData } from "../../data/Reddit-Data";
 
 @Component({
   selector: "app-reddit-item-list",
@@ -6,7 +7,7 @@ import { Component, Input } from "@angular/core";
   styleUrls: ["./reddit-item-list.component.css"],
 })
 export class RedditItemListComponent {
-  @Input() posts: String[];
+  @Input() posts: RedditData[];
 
   constructor() {}
 }

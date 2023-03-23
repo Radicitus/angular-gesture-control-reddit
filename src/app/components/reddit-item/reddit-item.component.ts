@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
-import { flush } from "@angular/core/testing";
+import { RedditData } from "../../data/Reddit-Data";
 
 @Component({
   selector: "app-reddit-item",
@@ -10,10 +10,10 @@ import { flush } from "@angular/core/testing";
   styleUrls: ["./reddit-item.component.css"],
 })
 export class RedditItemComponent {
-  @Input() post: String;
+  @Input() post: RedditData;
 
   // Post data
-  title: string = "This is a test title about something intertsting that i";
+  title: string = "This is a test title about something interesting";
   username: string = "testUser";
   subreddit: string = "r/testSubreddit";
   thumbnail: string =
@@ -37,6 +37,14 @@ export class RedditItemComponent {
     if (this.postContent.length > 88) {
       this.postContent = this.postContent.slice(0, 88) + "...";
     }
+
+    // Update post object
+    this.title = this.post.title;
+    // this.username = this.post.username;
+    // this.subreddit = this.post.subreddit;
+    // this.thumbnail = this.post.thumbnail;
+    // this.upVotes = this.post.upvotes;
+    // this.downVotes = this.post.downvotes;
   }
 
   savePost() {
