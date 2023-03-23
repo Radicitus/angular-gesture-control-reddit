@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PredictionEvent } from "../../prediction-event";
+import { RedditService } from "../../services/reddit.service";
 
 @Component({
   selector: "app-home-page",
@@ -11,7 +12,11 @@ export class HomePageComponent implements OnInit {
 
   redditPosts: string[] = ["a", "b", "c"];
 
-  constructor() {}
+  constructor(private redditService: RedditService) {
+    this.redditService.getRedditPosts().then((data) => {
+      console.log(data);
+    });
+  }
 
   ngOnInit(): void {}
 
