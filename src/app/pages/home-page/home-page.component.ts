@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PredictionEvent } from "../../prediction-event";
 import { RedditService } from "../../services/reddit.service";
 import { RedditData } from "../../data/Reddit-Data";
+import { PostStateService } from "../../services/post-state.service";
 
 @Component({
   selector: "app-home-page",
@@ -10,10 +11,13 @@ import { RedditData } from "../../data/Reddit-Data";
 })
 export class HomePageComponent implements OnInit {
   gesture: String = "";
-
   redditPosts: RedditData[];
+  postIndex: number = -1;
 
-  constructor(private redditService: RedditService) {
+  constructor(
+    private redditService: RedditService,
+    public postStateService: PostStateService
+  ) {
     this.redditService.getRedditPosts().then((data) => {
       console.log(data);
       this.redditPosts = data;
@@ -24,5 +28,22 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent) {
     this.gesture = event.getPrediction();
+  }
+
+  updatePostIndex(index: number) {
+    if (index > this.redditPosts.length) {
+      this.postIndex = this.redditPosts.length - 1;
+      this.postStateService.changePostIndex(this.postIndex);
+      return;
+    }
+
+    if (index < 0) {
+      this.postIndex = 0;
+      this.postStateService.changePostIndex(this.postIndex);
+      return;
+    }
+
+    this.postIndex = index;
+    this.postStateService.changePostIndex(this.postIndex);
   }
 }
