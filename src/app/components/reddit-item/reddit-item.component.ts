@@ -22,6 +22,7 @@ export class RedditItemComponent {
   saved: boolean = false;
   hasUpvoted: boolean = false;
   hasDownvoted: boolean = false;
+  currentPost: boolean = false;
 
   // Icons
   upvoteIcon = faArrowUp;
@@ -35,9 +36,7 @@ export class RedditItemComponent {
 
     this.postStateService.postIndexObservable.subscribe((index) => {
       console.log(index);
-      if (index === this.postIndex) {
-        console.log("POST# ", this.post.title);
-      }
+      this.currentPost = index === this.postIndex;
     });
   }
 

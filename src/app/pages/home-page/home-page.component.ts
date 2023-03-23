@@ -11,8 +11,8 @@ import { PostStateService } from "../../services/post-state.service";
 })
 export class HomePageComponent implements OnInit {
   gesture: String = "";
-
   redditPosts: RedditData[];
+  postIndex: number = -1;
 
   constructor(
     private redditService: RedditService,
@@ -28,5 +28,22 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent) {
     this.gesture = event.getPrediction();
+  }
+
+  updatePostIndex(index: number) {
+    if (index > this.redditPosts.length) {
+      this.postIndex = this.redditPosts.length - 1;
+      this.postStateService.changePostIndex(this.postIndex);
+      return;
+    }
+
+    if (index < 0) {
+      this.postIndex = 0;
+      this.postStateService.changePostIndex(this.postIndex);
+      return;
+    }
+
+    this.postIndex = index;
+    this.postStateService.changePostIndex(this.postIndex);
   }
 }
