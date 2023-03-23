@@ -19,7 +19,9 @@ export class RedditItemComponent {
   thumbnail: string =
     "https://b.thumbs.redditmedia.com/WxPA-HOO09Ke55Q9GVwyzahaSQSCMX67yyUUbbMmj5s.jpg";
   upVotes: number = 1002;
+  hasUpvoted: boolean = false;
   downVotes: number = 45;
+  hasDownvoted: boolean = false;
   postContent: string =
     "This is some post content. It doesn't have to be much, but here it is! Awesome, thanks for reading. There's no way something would be so long but.";
 
@@ -49,5 +51,31 @@ export class RedditItemComponent {
     this.saved = !this.saved;
   }
 
-  downvotePost() {}
+  downvotePost() {
+    if (this.hasDownvoted) {
+      return;
+    } else if (!this.hasDownvoted && !this.hasUpvoted) {
+      this.downVotes++;
+      this.hasDownvoted = true;
+    } else {
+      this.hasUpvoted = false;
+      this.hasDownvoted = true;
+      this.upVotes--;
+      this.downVotes++;
+    }
+  }
+
+  upvotePost() {
+    if (this.hasUpvoted) {
+      return;
+    } else if (!this.hasDownvoted && !this.hasUpvoted) {
+      this.upVotes++;
+      this.hasUpvoted = true;
+    } else {
+      this.hasUpvoted = true;
+      this.hasDownvoted = false;
+      this.upVotes++;
+      this.downVotes--;
+    }
+  }
 }
