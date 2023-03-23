@@ -28,6 +28,12 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent) {
     this.gesture = event.getPrediction();
+    if (this.gesture === "Hand Pointing") {
+      this.updatePostIndex(this.postIndex + 1);
+    }
+    if (this.gesture === "One Open, One Pointing") {
+      this.updatePostIndex(this.postIndex - 1);
+    }
   }
 
   updatePostIndex(index: number) {
