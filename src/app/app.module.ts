@@ -9,6 +9,7 @@ import { HandtrackerComponent } from './components/handtracker/handtracker.compo
 import { RedditItemComponent } from './components/reddit-item/reddit-item.component';
 import { RedditItemListComponent } from './components/reddit-item-list/reddit-item-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
