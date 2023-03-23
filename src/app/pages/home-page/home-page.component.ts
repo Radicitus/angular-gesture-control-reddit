@@ -46,6 +46,9 @@ export class HomePageComponent implements OnInit {
     if (this.gesture === "Two Closed Hands") {
       this.setUnsavePost();
     }
+    if (this.gesture === "Two Open Hands") {
+      this.refreshPosts();
+    }
   }
 
   updatePostIndex(index: number) {
@@ -78,5 +81,17 @@ export class HomePageComponent implements OnInit {
   }
   setDownvote() {
     this.postStateService.setDownVote(true);
+  }
+
+  refreshPosts() {
+    this.redditService.getRedditPosts().then((data) => {
+      this.redditPosts = [];
+
+      setTimeout(() => {
+        console.log(data);
+        this.redditPosts = data;
+        this.postIndex = -1;
+      }, 1000);
+    });
   }
 }

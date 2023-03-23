@@ -1,8 +1,7 @@
 <div class="text-center">
     <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
 
-    <button (click)="this.setSavePost()">Save</button>
-    <button (click)="this.setUnsavePost()">Unsave</button>
+    <button (click)="this.refreshPosts()">Refresh</button>
 
     <div class="mt-8" *ngIf="redditPosts">
         <app-reddit-item-list [posts]="redditPosts" ></app-reddit-item-list>
