@@ -3,6 +3,7 @@ import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { RedditData } from "../../data/Reddit-Data";
+import { PostStateService } from "../../services/post-state.service";
 
 @Component({
   selector: "app-reddit-item",
@@ -11,6 +12,7 @@ import { RedditData } from "../../data/Reddit-Data";
 })
 export class RedditItemComponent {
   @Input() post: RedditData;
+  @Input() postIndex: number;
 
   // Post data
   postContent: string =
@@ -26,10 +28,17 @@ export class RedditItemComponent {
   downvoteIcon = faArrowDown;
   bookmarkOutlineIcon = faBookmark;
 
-  constructor() {
+  constructor(private postStateService: PostStateService) {
     if (this.postContent.length > 88) {
       this.postContent = this.postContent.slice(0, 88) + "...";
     }
+
+    this.postStateService.postIndexObservable.subscribe((index) => {
+      console.log(index);
+      if (index === this.postIndex) {
+        console.log("POST# ", this.post.title);
+      }
+    });
   }
 
   savePost() {

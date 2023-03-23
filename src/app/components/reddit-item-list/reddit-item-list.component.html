@@ -1,5 +1,5 @@
 <div *ngIf="posts">
-    <div *ngFor="let p of posts">
-        <app-reddit-item [post]="p"></app-reddit-item>
+    <div *ngFor="let p of posts; index as i">
+        <app-reddit-item [post]="p" [postIndex]="i"></app-reddit-item>
     </div>
 </div>

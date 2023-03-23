@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PredictionEvent } from "../../prediction-event";
 import { RedditService } from "../../services/reddit.service";
 import { RedditData } from "../../data/Reddit-Data";
+import { PostStateService } from "../../services/post-state.service";
 
 @Component({
   selector: "app-home-page",
@@ -13,7 +14,10 @@ export class HomePageComponent implements OnInit {
 
   redditPosts: RedditData[];
 
-  constructor(private redditService: RedditService) {
+  constructor(
+    private redditService: RedditService,
+    public postStateService: PostStateService
+  ) {
     this.redditService.getRedditPosts().then((data) => {
       console.log(data);
       this.redditPosts = data;

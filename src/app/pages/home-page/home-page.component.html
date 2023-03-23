@@ -1,7 +1,7 @@
 <div class="text-center">
     <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
 
-    <div [innerHTML]="gesture"></div>
+    <button (click)="this.postStateService.changePostIndex(1)">TEST</button>
 
     <div class="mt-8" *ngIf="redditPosts">
         <app-reddit-item-list [posts]="redditPosts" ></app-reddit-item-list>
