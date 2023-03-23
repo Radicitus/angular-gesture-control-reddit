@@ -34,18 +34,37 @@ export class RedditItemComponent {
       this.postContent = this.postContent.slice(0, 88) + "...";
     }
 
+    // Check Current Post
     this.postStateService.postIndexObservable.subscribe((index) => {
       console.log(index);
       this.currentPost = index === this.postIndex;
     });
-  }
 
-  savePost() {
-    this.saved = true;
-  }
+    // Toggle Saved
+    this.postStateService.setSavedObservable.subscribe((state) => {
+      if (this.currentPost) {
+        this.saved = state === 1;
+        this.postStateService.updateSaveState(0);
+      }
+    });
 
-  unsavePost() {
-    this.saved = false;
+    this.postStateService.upVoteObservable.subscribe((state) => {
+      if (this.currentPost) {
+        if (state) {
+          this.upvotePost();
+          this.postStateService.setUpVote(false);
+        }
+      }
+    });
+
+    this.postStateService.downVoteObservable.subscribe((state) => {
+      if (this.currentPost) {
+        if (state) {
+          this.downvotePost();
+          this.postStateService.setDownVote(false);
+        }
+      }
+    });
   }
 
   switchSavePost() {

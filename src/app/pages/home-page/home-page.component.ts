@@ -34,6 +34,12 @@ export class HomePageComponent implements OnInit {
     if (this.gesture === "One Open, One Pointing") {
       this.updatePostIndex(this.postIndex - 1);
     }
+    if (this.gesture === "Open Hand") {
+      this.setUpvote();
+    }
+    if (this.gesture === "Closed Hand") {
+      this.setDownvote();
+    }
   }
 
   updatePostIndex(index: number) {
@@ -51,5 +57,20 @@ export class HomePageComponent implements OnInit {
 
     this.postIndex = index;
     this.postStateService.changePostIndex(this.postIndex);
+  }
+
+  setSavePost() {
+    this.postStateService.updateSaveState(1);
+  }
+
+  setUnsavePost() {
+    this.postStateService.updateSaveState(2);
+  }
+
+  setUpvote() {
+    this.postStateService.setUpVote(true);
+  }
+  setDownvote() {
+    this.postStateService.setDownVote(true);
   }
 }
