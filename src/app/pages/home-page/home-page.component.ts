@@ -11,6 +11,7 @@ import { PostStateService } from "../../services/post-state.service";
 })
 export class HomePageComponent implements OnInit {
   gesture: String = "";
+  control: String = "";
   redditPosts: RedditData[];
   postIndex: number = -1;
 
@@ -30,24 +31,34 @@ export class HomePageComponent implements OnInit {
     this.gesture = event.getPrediction();
     if (this.gesture === "Hand Pointing") {
       this.updatePostIndex(this.postIndex + 1);
+      this.control = "Move Down One Post";
     }
     if (this.gesture === "One Open, One Pointing") {
       this.updatePostIndex(this.postIndex - 1);
+      this.control = "Move Up One Post";
     }
     if (this.gesture === "Open Hand") {
       this.setUpvote();
+      this.control = "Upvote";
     }
     if (this.gesture === "Closed Hand") {
       this.setDownvote();
+      this.control = "Downvote";
     }
     if (this.gesture === "One Open, One Closed") {
       this.setSavePost();
+      this.control = "Save Post";
     }
     if (this.gesture === "Two Closed Hands") {
       this.setUnsavePost();
+      this.control = "Unsave Post";
     }
     if (this.gesture === "Two Open Hands") {
       this.refreshPosts();
+      this.control = "Refresh Posts";
+    }
+    if (this.gesture === "None") {
+      this.control = "";
     }
   }
 

@@ -8,29 +8,31 @@
         {{this.post.subreddit}} <span class="font-extralight">- Posted by u/{{this.post.username}}</span>
     </div>
 
-    <div class="col-start-10 col-span-1 row-start-1 row-span-1 place-self-center" (click)="switchSavePost()">
-        <fa-icon *ngIf="!saved" [icon]="bookmarkOutlineIcon" class="text-black" ></fa-icon>
-        <fa-icon *ngIf="saved" [icon]="bookmarkOutlineIcon" class="text-black text-yellow-400" ></fa-icon>
+    <div class="col-start-10 col-span-1 row-start-1 row-span-1 place-self-center text-2xl pt-6"
+         (click)="switchSavePost()">
+        <fa-icon *ngIf="!saved" [icon]="bookmarkOutlineIcon" class="text-black"></fa-icon>
+        <fa-icon *ngIf="saved" [icon]="bookmarkOutlineIcon" class="text-black text-yellow-400"></fa-icon>
     </div>
 
     <div class="col-start-4 col-span-6 row-start-1 row-span-2 justify-self-start self-center pl-4 text-left font-semibold pt-6 leading-4">
         {{this.post.title}}
     </div>
 
-    <div class="col-start-4 col-span-2 row-start-4 row-span-1 justify-self-start self-start pl-3 text-blue-600" (click)="downvotePost()">
-        <fa-icon *ngIf="!hasDownvoted" [icon]="downvoteIcon" class="text-black" ></fa-icon>
-        <fa-icon *ngIf="hasDownvoted" [icon]="downvoteIcon" class="text-blue-600" ></fa-icon>
+    <div class="col-start-4 col-span-2 row-start-4 row-span-1 justify-self-start self-start pl-3 text-blue-600"
+         (click)="downvotePost()">
+        <fa-icon *ngIf="!hasDownvoted" [icon]="downvoteIcon" class="text-black"></fa-icon>
+        <fa-icon *ngIf="hasDownvoted" [icon]="downvoteIcon" class="text-blue-600"></fa-icon>
         {{this.post.downvotes}}
     </div>
 
-    <div class="col-start-4 col-span-2 row-start-3 row-span-1 justify-self-start self-center pl-3 text-orange-500" (click)="upvotePost()">
-
-        <fa-icon *ngIf="!hasUpvoted" [icon]="upvoteIcon" class="text-black" ></fa-icon>
-        <fa-icon *ngIf="hasUpvoted" [icon]="upvoteIcon" class="text-orange-500" ></fa-icon>
+    <div class="col-start-4 col-span-2 row-start-3 row-span-1 justify-self-start self-center pl-3 text-orange-500"
+         (click)="upvotePost()">
+        <fa-icon *ngIf="!hasUpvoted" [icon]="upvoteIcon" class="text-black"></fa-icon>
+        <fa-icon *ngIf="hasUpvoted" [icon]="upvoteIcon" class="text-orange-500"></fa-icon>
         {{this.post.upvotes}}
     </div>
 
-    <div class="col-start-6 col-span-5 row-start-3 row-span-2 place-self-start text-sm text-left break-words font-light pr-3">
+    <div class="col-start-6 col-span-5 row-start-3 row-span-2 place-self-center text-sm text-left break-words font-light pr-3">
         {{postContent}}
     </div>
 </div>

@@ -15,8 +15,7 @@ export class RedditItemComponent {
   @Input() postIndex: number;
 
   // Post data
-  postContent: string =
-    "This is some post content. It doesn't have to be much, but here it is! Awesome, thanks for reading. There's no way something would be so long but.";
+  postContent: string = "Click here to view post...";
 
   // Post State
   saved: boolean = false;

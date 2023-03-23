@@ -1,7 +1,11 @@
 <div class="text-center">
     <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
 
-    <button (click)="this.refreshPosts()">Refresh</button>
+    <div *ngIf="control">
+        You have activated: <span class="font-bold">{{control}}</span>
+    </div>
+    <div *ngIf="!control">No gesture detected...</div>
+
 
     <div class="mt-8" *ngIf="redditPosts">
         <app-reddit-item-list [posts]="redditPosts" ></app-reddit-item-list>
